@@ -1,0 +1,5 @@
+
+// for admin
+
+INSERT INTO admin
+VALUES ("admin","admin")

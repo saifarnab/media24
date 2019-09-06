@@ -1,0 +1,129 @@
+
+// for billboard 
+
+CREATE TABLE billarea (
+    areaID int NOT NULL AUTO_INCREMENT,
+    areaName varchar(255),
+    PRIMARY KEY (areaID)
+);
+
+CREATE TABLE billboard (
+    billID int NOT NULL AUTO_INCREMENT,
+    areaID int NOT NULL,
+    location varchar(255),
+    pricePerDay numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (billID),
+    FOREIGN KEY (areaID) REFERENCES billarea(areaID)
+);
+
+// for bus
+
+CREATE TABLE busRoute (
+    routeID int NOT NULL AUTO_INCREMENT,
+    routeName varchar(255),
+    PRIMARY KEY (routeID)
+);
+
+
+CREATE TABLE bus (
+    busID int NOT NULL AUTO_INCREMENT,
+    companyName varchar(255) NOT NULL,
+    routeID int NOT NULL,
+    pricePerTour numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (busID),
+    FOREIGN KEY (routeID) REFERENCES busroute(routeID)
+);
+
+// for rail
+
+CREATE TABLE railStation (
+    stationID int NOT NULL AUTO_INCREMENT,
+    stationName varchar(255),
+    PRIMARY KEY (stationID)
+);
+
+CREATE TABLE rail (
+    railID int NOT NULL AUTO_INCREMENT,
+    stationID int NOT NULL,
+    terminal int NOT NULL,
+    pricePerDay numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (railID),
+    FOREIGN KEY (stationID) REFERENCES railstation(stationID)
+);
+
+// for airport
+
+CREATE TABLE airportname (
+    nameID int NOT NULL AUTO_INCREMENT,
+    airportName varchar(255),
+    PRIMARY KEY (nameID)
+);
+
+CREATE TABLE air (
+    airID int NOT NULL AUTO_INCREMENT,
+    nameID int NOT NULL,
+    terminal int NOT NULL,
+    pricePerDay numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (airID),
+    FOREIGN KEY (nameID) REFERENCES airportName(nameID)
+);
+
+// for van
+
+CREATE TABLE vanRoute (
+    routeID int NOT NULL AUTO_INCREMENT,
+    routeName varchar(255),
+    PRIMARY KEY (routeID)
+);
+
+CREATE TABLE van (
+    vanID int NOT NULL AUTO_INCREMENT,
+    companyName varchar(255) NOT NULL,
+    routeID int NOT NULL,
+    pricePerTour numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (vanID),
+    FOREIGN KEY (routeID) REFERENCES vanroute(routeID)
+);
+
+// for cinema hall
+
+CREATE TABLE hallname(
+    hallID int NOT NULL AUTO_INCREMENT,
+    hallName varchar(255),
+    PRIMARY KEY (hallID)
+);
+
+CREATE TABLE cinema (
+    cinemaID int NOT NULL AUTO_INCREMENT,
+    hallID int NOT NULL,
+    hallNumber int NOT NULL,
+    pricePerShow numeric(7,2),
+    availability varchar(255),
+    PRIMARY KEY (cinemaID),
+    FOREIGN KEY (hallID) REFERENCES hallname(hallID)
+);
+
+// for admin 
+
+CREATE TABLE admin (
+username varchar( 30 ) NOT NULL ,
+password varchar( 128 ) NOT NULL ,
+PRIMARY KEY (username) 
+) 
+
+
+// for members
+
+CREATE TABLE members (
+id int( 11 ) NOT NULL AUTO_INCREMENT ,
+username varchar( 30 ) NOT NULL ,
+email varchar( 50 ) NOT NULL ,
+password varchar( 128 ) NOT NULL ,
+PRIMARY KEY (id) ,
+UNIQUE KEY username ( username)
+) 
